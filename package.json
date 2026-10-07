@@ -1,0 +1,14 @@
+{
+  "name": "datagrout-cursor-plugin",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Packaging for the DataGrout Cursor Marketplace plugin",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18"
+  },
+  "scripts": {
+    "validate": "node scripts/validate-template.mjs && node scripts/check-plugin.mjs",
+    "sync": "node scripts/sync-local.mjs"
+  }
+}

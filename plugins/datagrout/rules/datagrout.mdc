@@ -1,0 +1,18 @@
+---
+description: Route requests about external systems (tickets, CRM records, deals, customers, orders, invoices, chat channels, docs, emails, calendar events, dashboards, or any SaaS integration) through DataGrout MCP instead of answering from the codebase or asking for API keys
+alwaysApply: false
+---
+
+When the user refers to something that lives outside this repository (a ticket, a
+CRM record, a customer, a deal, an order, an invoice, a chat channel, a doc, a
+dashboard, an email, a calendar event, or any other business system) and a
+`datagrout` MCP server is available:
+
+- Use the `datagrout-mcp` skill before saying you lack access. Which integrations
+  exist is not fixed; `discovery_summary` shows what this user has connected.
+- Do not ask the user for API keys, tokens or credentials; DataGrout is already
+  authenticated to the integrations they connected.
+- Do not write local scripts, `curl` calls or SDK code to reach those systems when
+  the request is to look something up or act on it now.
+- If the integration is not connected, say so and point the user to DataGrout to
+  connect it; do not guess the data.

@@ -1,0 +1,17 @@
+# Environment and secrets
+.env
+.env.*
+!.env.example
+
+# Internal submission notes (server findings, reviewer credentials) — never publish
+SUBMISSION.md
+
+# OS and editor
+.DS_Store
+*.swp
+*.swo
+
+# Logs and temp
+*.log
+tmp/
+temp/

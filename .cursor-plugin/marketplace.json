@@ -1,0 +1,20 @@
+{
+  "name": "datagrout-plugins",
+  "owner": {
+    "name": "DataGrout",
+    "email": "support@datagrout.ai"
+  },
+  "metadata": {
+    "description": "Official DataGrout plugins for Cursor",
+    "version": "1.0.0"
+  },
+  "plugins": [
+    {
+      "name": "datagrout",
+      "source": "./plugins/datagrout",
+      "description": "DataGrout MCP: one OAuth-secured endpoint for all your connected tools",
+      "category": "Integrations",
+      "keywords": ["mcp", "datagrout", "integrations", "agents", "workflow"]
+    }
+  ]
+}
