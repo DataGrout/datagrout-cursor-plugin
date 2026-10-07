@@ -2,6 +2,9 @@
   "name": "datagrout",
   "displayName": "DataGrout",
   "version": "1.0.0",
+  "minClientVersions": {
+    "cursor": "3.13.0"
+  },
   "description": "Give Cursor's agent every tool you connect in DataGrout: discover, plan and run integrations through one MCP endpoint.",
   "author": {
     "name": "DataGrout",
@@ -10,6 +13,8 @@
   "homepage": "https://datagrout.ai",
   "repository": "https://github.com/DataGrout/datagrout-cursor-plugin",
   "license": "MIT",
-  "keywords": ["mcp", "datagrout", "integrations", "agents", "workflow"],
-  "logo": "assets/logo.png"
+  "logo": "assets/logo.png",
+  "keywords": ["datagrout", "mcp", "integrations", "agents", "workflow"],
+  "category": "integrations",
+  "tags": ["datagrout", "mcp", "integrations", "agents"]
 }

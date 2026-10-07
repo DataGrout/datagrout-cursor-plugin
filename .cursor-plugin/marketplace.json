@@ -12,9 +12,7 @@
     {
       "name": "datagrout",
       "source": "./plugins/datagrout",
-      "description": "DataGrout MCP: one OAuth-secured endpoint for all your connected tools",
-      "category": "Integrations",
-      "keywords": ["mcp", "datagrout", "integrations", "agents", "workflow"]
+      "description": "DataGrout MCP: one OAuth-secured endpoint for all your connected tools"
     }
   ]
 }

@@ -1,6 +1,7 @@
 {
   "mcpServers": {
     "datagrout": {
+      "type": "http",
       "url": "https://gateway.datagrout.ai/connect"
     }
   }

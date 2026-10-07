@@ -19,12 +19,14 @@ User documentation lives in [`plugins/datagrout/README.md`](plugins/datagrout/RE
 .cursor-plugin/marketplace.json        marketplace manifest, lists plugins/datagrout
 plugins/datagrout/
   .cursor-plugin/plugin.json           plugin manifest
-  mcp.json                             remote MCP server entry (url only)
+  mcp.json                             remote MCP server entry (type http + url)
   skills/datagrout-mcp/SKILL.md        discover → plan → perform workflow
   rules/datagrout.mdc                  when to route a request through DataGrout
   commands/datagrout.md                /datagrout command
   assets/logo.png                      listing logo (256×256, same as the Zapier listing)
   README.md                            install, connect, tools, privacy, support
+  CHANGELOG.md                         release notes per version
+  LICENSE                              MIT
 scripts/
   validate-template.mjs                Cursor's validator, from cursor/plugin-template
   check-plugin.mjs                     DataGrout-specific submission checks

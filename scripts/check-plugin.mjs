@@ -2,8 +2,9 @@
 
 /**
  * DataGrout-specific submission checks that complement validate-template.mjs:
- * a url-only mcp.json, ${VAR} declarations, matching versions, a square logo,
- * and no hooks or scripts shipped inside the plugin.
+ * mcp.json limited to type + url, ${VAR} declarations, Cursor's schema key
+ * whitelists, matching versions, a square logo, and no hooks or scripts shipped
+ * inside the plugin.
  */
 
 import { promises as fs } from "node:fs";
@@ -47,8 +48,11 @@ function checkMcpConfig(mcp, manifest) {
   if (typeof server.url !== "string" || !server.url.startsWith(`${serverOrigin}/`)) {
     addError(`mcp.json "datagrout.url" must be an ${serverOrigin}/ URL.`);
   }
-  if (server.headers || server.auth) {
-    addError("mcp.json must be url-only: DataGrout uses OAuth 2.1 with automatic DCR, so no auth or headers.");
+  const extraKeys = Object.keys(server).filter((key) => key !== "type" && key !== "url");
+  if (extraKeys.length > 0 || server.type !== "http") {
+    addError(
+      `mcp.json "datagrout" must be exactly {"type": "http", "url"}: DataGrout uses OAuth 2.1 with automatic DCR (found: ${Object.keys(server).join(", ")}).`,
+    );
   }
 
   const declared = new Set(Object.keys(manifest?.variables?.properties ?? {}));
@@ -56,6 +60,29 @@ function checkMcpConfig(mcp, manifest) {
   for (const name of used) {
     if (!declared.has(name)) {
       addError(`mcp.json uses \${${name}} but plugin.json "variables" does not declare it.`);
+    }
+  }
+}
+
+// Key whitelists from cursor/plugins schemas/*.schema.json (additionalProperties: false).
+const allowedPluginKeys = new Set([
+  "name", "displayName", "description", "version", "minClientVersions", "author", "publisher",
+  "homepage", "repository", "license", "logo", "keywords", "category", "tags", "commands",
+  "agents", "skills", "rules", "hooks", "variables", "mcpServers",
+]);
+const allowedEntryKeys = new Set(["name", "source", "description", "minClientVersions"]);
+
+function checkSchemaKeys(manifest, marketplace) {
+  for (const key of Object.keys(manifest ?? {})) {
+    if (!allowedPluginKeys.has(key)) {
+      addError(`plugin.json has "${key}", which Cursor's plugin schema does not allow.`);
+    }
+  }
+  for (const entry of marketplace?.plugins ?? []) {
+    for (const key of Object.keys(entry)) {
+      if (!allowedEntryKeys.has(key)) {
+        addError(`marketplace.json entry "${entry.name}" has "${key}"; Cursor's schema allows only name, source, description, minClientVersions.`);
+      }
     }
   }
 }
@@ -111,6 +138,7 @@ async function main() {
   const mcp = await readJson("plugins/datagrout/mcp.json");
 
   checkMcpConfig(mcp, manifest);
+  checkSchemaKeys(manifest, marketplace);
   checkVersions(manifest, marketplace);
   await checkLogo(manifest);
   await checkNoExecutables();

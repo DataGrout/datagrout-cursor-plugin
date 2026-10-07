@@ -7,8 +7,9 @@ right tool, plan multi-step work, and confirm before it changes anything.
 
 ## Install
 
-- **Cursor Marketplace:** open **Customize** in the sidebar, search for **DataGrout**,
-  select **Install**, and choose project or user scope.
+- **Cursor Marketplace:** open **Customize** in the sidebar (or **Cursor Settings →
+  Plugins**), search for **DataGrout**, select **Install**, and choose project or user
+  scope. Or run `/add-plugin datagrout` in chat.
 - **Team marketplace (Teams and Enterprise):** an admin opens
   **Dashboard → Plugins & MCPs → Add Marketplace → Import from Repo**, pastes
   `https://github.com/DataGrout/datagrout-cursor-plugin`, and installs **DataGrout**.
@@ -37,6 +38,19 @@ The plugin adds:
    returns you to Cursor.
 4. The server turns healthy and its tools appear. No API key or server ID is needed;
    DataGrout identifies your account from the OAuth token.
+
+The plugin's `mcp.json`:
+
+```json
+{
+  "mcpServers": {
+    "datagrout": {
+      "type": "http",
+      "url": "https://gateway.datagrout.ai/connect"
+    }
+  }
+}
+```
 
 ## Tools
 
@@ -68,7 +82,8 @@ Try: `/datagrout list my open Jira issues`, or ask "what's the latest message in
 - Tool calls use DataGrout credits from your account; each result reports the
   credits charged.
 - This plugin contains only configuration and Markdown. No code runs on your machine.
-- Privacy policy and terms: [datagrout.ai/legal](https://datagrout.ai/legal).
+- [Privacy policy](https://datagrout.ai/legal#privacy) and
+  [terms of use](https://datagrout.ai/legal#terms).
 
 ## Troubleshooting
 
