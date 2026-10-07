@@ -45,10 +45,10 @@ so the list stays the same no matter how many integrations you connect.
 
 | Tool | What it does | Returns |
 | --- | --- | --- |
-| `discovery_summary` | Overview of what is connected | Integrations with tool counts; `focus` drills into one |
 | `discovery_discover` | Semantic search for tools that fit a goal | Ranked tool names with input schemas and side-effect flags |
-| `discovery_plan` | Plans a multi-step goal | Ranked plans, required inputs, and a `skill_handle` to run the plan |
 | `discovery_perform` | Runs a tool (or a planned `skill_handle`); `head: true` previews large lists, `refract` summarises | The tool's result plus execution ID and credits used |
+| `discovery_plan` | Plans a goal that needs several tools | Ranked plans, required inputs, and a `skill_handle` to run the plan |
+| `discovery_summary` | Overview of what is connected | Integrations with tool counts; `focus` drills into one |
 | `discovery_guide` | Step-by-step decision tree when the goal is unclear | Options to choose from at each step |
 
 Try: `/datagrout list my open Jira issues`, or ask "what's the latest message in our
